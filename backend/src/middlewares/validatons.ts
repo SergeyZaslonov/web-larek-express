@@ -33,17 +33,12 @@ export const validateOrderBody = celebrate({
       'any.only': 'Поле payment должно быть card или online.',
     }),
     email: Joi.string().email().required().messages({
-      'string.email': 'Поле email некоррекное значение.',
+      'string.email': 'Поле email некорректное значение.',
       'any.required': 'Поле email должно быть заполнено.',
     }),
-    phone: Joi.string()
-      .regex(/\+[0-9]+\s\(\d\d\d\)\s\d\d\d\s\d\d\s\d\d/i)
-      .required()
-      .messages({
-        'string.pattern.base':
-          'Поле телефона должно соответствовать шаблону +7 (999) 999-99-99.',
-        'any.required': 'Поле phone должно быть заполнено.',
-      }),
+    phone: Joi.string().required().messages({
+      'any.required': 'Поле phone должно быть заполнено.',
+    }),
     address: Joi.string().required().min(4).max(100).messages({
       'any.required': 'Поле address должно быть заполнено.',
       'string.min': 'Минимальная длина поля address=4.',
